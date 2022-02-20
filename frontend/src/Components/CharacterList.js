@@ -24,10 +24,19 @@ const CharacterList = () => {
         <>
             <h1>Characters</h1>
             {characters.map((character) => {
+                let characterClass = 'None'
+                let relic = 'None'
+                if (character.class) {
+                    characterClass = character.class.name
+                }
+                if (character.relic) {
+                    relic = character.relic.name
+                }
                 return (
                     <div key={character.id}>
                         <h3>{character.name}</h3>
-                        <h4>{character.class.name}</h4>
+                        <h4>Class: {characterClass}</h4>
+                        <h4>Holy Relic: {relic}</h4>
                         <h5>HP: {character.hitPoints}</h5>
                         <h5>Strongth: {character.strength}</h5>
                         <h5>Smort: {character.intelligence}</h5>
