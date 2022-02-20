@@ -24,6 +24,7 @@ namespace Lancelittle.Controllers
             _characterService = characterService;
         }
         //Three Get methods, one for All Characters, on for Characters by Id and one for Characters of a specific User
+        
         [AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
