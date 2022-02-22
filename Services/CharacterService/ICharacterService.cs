@@ -14,7 +14,6 @@ namespace Lancelittle.Services.CharacterService
         Task<ServiceResponse<List<GetCharacterDto>>> GetOwnedCharacters();
         Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter);
         Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updatedCharacter);
-        Task<ServiceResponse<GetCharacterDto>> UpdateOwnedCharacter(UpdateCharacterDto updatedCharacter);
         Task<ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id);
     }
 }

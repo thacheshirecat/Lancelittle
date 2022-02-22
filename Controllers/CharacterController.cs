@@ -31,16 +31,26 @@ namespace Lancelittle.Controllers
         {
             return Ok(await _characterService.GetAllCharacters());
         }
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingle(int id)
         {
-            return Ok(await _characterService.GetCharacterById(id));
+            ServiceResponse<GetCharacterDto> serviceResponse = await _characterService.GetCharacterById(id);
+            if(serviceResponse.Data == null)
+            {
+                return NotFound(serviceResponse);
+            }
+            return Ok(serviceResponse);
         }
         [HttpGet("GetOwned")]
         public async Task<IActionResult> GetOwned()
         {
-            //GetOwnedCharacters() method contains logic to find the current User Id
-            return Ok(await _characterService.GetOwnedCharacters());
+            ServiceResponse<List<GetCharacterDto>> serviceResponse = await _characterService.GetOwnedCharacters();
+            if(serviceResponse.Data == null)
+            {
+                return NotFound(serviceResponse);
+            }
+            return Ok(serviceResponse);
         }
         [HttpPost("create")]
         public async Task<IActionResult> CreateCharacter(AddCharacterDto character)
@@ -52,16 +62,6 @@ namespace Lancelittle.Controllers
         public async Task<IActionResult> UpdateCharacter(UpdateCharacterDto updatedCharacter)
         {
             ServiceResponse<GetCharacterDto> serviceResponse = await _characterService.UpdateCharacter(updatedCharacter);
-            if(serviceResponse.Data == null)
-            {
-                return NotFound(serviceResponse);
-            }
-            return Ok(serviceResponse);
-        }
-        [HttpPut("updateowned")]
-        public async Task<IActionResult> UpdateOwnedCharacter(UpdateCharacterDto updatedCharacter)
-        {
-            ServiceResponse<GetCharacterDto> serviceResponse = await _characterService.UpdateOwnedCharacter(updatedCharacter);
             if(serviceResponse.Data == null)
             {
                 return NotFound(serviceResponse);

@@ -1,4 +1,4 @@
-import logo from './logo.svg'
+import logo from './verysadcat.png'
 import './App.css'
 import CharacterList from './Components/CharacterList'
 
