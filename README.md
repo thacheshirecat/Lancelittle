@@ -2,6 +2,6 @@
 
 Just a little like Lancelot
 
-## This Project is made using .NET Core 3.1 and Entity Framework
+## This Project is made using .NET Core 3.1/Entity Framework and React
 
-### API for a website involved in detailing features of a made up game.
+### RESTful API connected to a React front end
